@@ -21,9 +21,9 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 ########################################
 ## Load Data
 ########################################
-if (os.path.exists("./dictionaries/training_wo_tags.dict")):
-    dictionary = corpora.Dictionary.load('./dictionaries/training_wo_tags.dict')
-    corpus = corpora.MmCorpus('./dictionaries/training_wo_tags.mm')
+if (os.path.exists("./dictionaries/python_tags.dict")):
+    dictionary = corpora.Dictionary.load('./dictionaries/python_tags.dict')
+    corpus = corpora.MmCorpus('./dictionaries/python_tags.mm')
     print("Used dictionary generated")
 else:
     print("Please run the preprocessing to generate a dictionary file")
@@ -34,12 +34,9 @@ else:
 tfidf = models.TfidfModel(corpus)
 corpus_tfidf = tfidf[corpus]
 
-for doc in corpus_tfidf:
-    print(doc)
-
 ########################################
 ## Applying LSI
 ########################################
-lsi = models.LsiModel(corpus_tfidf, id2word=dictionary, num_topics=2)
+lsi = models.LsiModel(corpus_tfidf, id2word=dictionary, num_topics=500)
 corpus_lsi = lsi[corpus_tfidf]
-lsi.print_topics(2)
+lsi.print_topics(500)
