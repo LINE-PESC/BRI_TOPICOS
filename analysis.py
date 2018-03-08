@@ -207,4 +207,4 @@ ldatopics = lda.show_topics(formatted=False)
 ########################################
 ## Generate Topic Coherence Graph
 ########################################
-lmlist, c_v = evaluate_graph(dictionary=dictionary, corpus=corpus, texts=cleared_docs, limit=50)
+#lmlist, c_v = evaluate_graph(dictionary=dictionary, corpus=corpus, texts=cleared_docs, limit=50)
